@@ -1,0 +1,35 @@
+<div class= "friendsView">
+       <br>
+       <br>
+    <div class="eachView d-flex m-3" *ngFor="let val of friendsData,let i=index" >
+        
+        <div style="background-color:red ; height: 140px; width:140px;">
+            <img style="height: 100%;" width="100%" [src]="friendsData[i].profilepic"> 
+   
+           </div>
+           <div class="row ">
+
+            <div class="col-7">
+           <div class="homeDisplayData" style="background-color: antiquewhite; height: 140px; width:550px">
+                <ul>
+                    <li>{{friendsData[i].name}}  &nbsp;</li>
+      
+                    <li>{{friendsData[i].profession}}</li>
+                    <br>
+                    <li>{{friendsData[i].age}}</li>
+
+                    <br>
+                    <li class="bio" style="word-wrap:break-word">{{friendsData[i].bio}}</li>
+                </ul>
+                </div>
+                </div>
+                <br>
+                <br>
+            <div class="col-3 mt-4" >
+                <button class="btn btn-success">Add Friend</button>
+            </div>
+          
+           </div>
+    </div>
+
+</div>

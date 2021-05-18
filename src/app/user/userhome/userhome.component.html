@@ -1,0 +1,227 @@
+
+    <div class="row">
+        <div class="col-3">
+          <div class="sidebar text-center container-fluid " style="background-color:#111743; color:blanchedalmond; height:1000px">
+           <img src="">
+           <h3></h3>    
+           <h3 style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">Connect Zilla</h3>
+           <hr style="background-color:blanchedalmond" width="100%">  
+    
+            
+   
+           <br>
+           <br>
+           <button style="width:150px;"  class="btn btn-warning"><a class="nav-link " >My details</a></button>
+           <br>
+         <br>
+           <button class="btn btn-warning"><a class="nav-link  " style="width:150px; " (click)="showpeople()" >People</a></button>
+
+           <br>
+           <br>
+         
+           <button class="btn btn-warning"><a class="nav-link " style="width:150px;" >Friends</a></button>  <br>
+         
+           <br>
+           <button class="btn btn-warning"><a class="nav-link " style="width:150px;" (click)="logout()" >Logout</a></button>
+         
+
+         
+         
+          </div>
+   
+           
+   
+        </div>
+        <div class="col-9">
+           
+          <br>
+          <br>
+
+            <br>
+            <br>
+            <h3 style="font-family: 'Times New Roman', Times, serif; text-decoration: underline;">Home</h3>
+            <hr style="width: 100%; height: 5px;">
+
+            <br>
+            <div class="homeDisplay d-flex" style="height: 180px;">
+             <div class="homeDisplayImg" style="background-color:red ; height: 180px; width:140px;">
+              <img style="height: 100%;" width="100%" [src]="currUserData.profilepic"> 
+     
+             </div>
+             <div class="homeDisplayData" style="background-color: antiquewhite; height: 180px; width:550px">
+                  <ul>
+                      <li>{{currUserData.name}}</li>
+        
+                      <li>{{currUserData.age}}</li>
+                      <br>
+                      <li>{{currUserData.profession}}:<span></span></li>
+
+                      <br>
+                      <li class="bio" style="word-wrap:break-word">{{currUserData.bio}}</li>
+                  </ul>
+
+             </div>
+             
+
+
+            </div>
+            <br>
+            <br>
+            <button class="btn btn-success">Show More Details</button>
+
+            <br>
+            <br>
+
+            
+
+            <div class="more-details  container" >
+
+            <div class="row">
+                <div class="col-4">
+                    <ul>
+                        <li>{{currUserData.phoneNumber}}<span></span></li>
+          
+                        <li>{{currUserData.address}}<span></span></li>
+                        <br>
+                        <li>{{currUserData.nationality}}<span></span></li>
+  
+                        <br>
+                        <li class="bio" style="word-wrap:break-word">{{currUserData.bio}}</li>
+                    </ul>
+                </div>
+                <div class="col-4">
+                    <ul>
+                        <li>{{currUserData.email}}<span></span></li>
+          
+                        <li>{{currUserData.marital}}<span></span></li>
+                        <br>
+                        <li>{{currUserData.profession}}</li>
+  
+                        <br>
+                        <li class="bio" style="word-wrap:break-word">{{currUserData.username}}</li>
+                    </ul>
+                </div>
+            </div>
+          
+          
+             </div>
+<br>
+<br>
+
+     <div class="requests" >
+         <br>
+         <h3>Requests</h3>
+         <hr style="width: 100%;">
+     <table style="width: 100%;">
+         <tr>
+             <th>Requests</th>
+             <th>Action</th>
+
+         </tr>
+         <tr *ngFor="let val of requestData,let i=index">
+             <td>
+               <img style="width: 80px; height:80px" [src]="val.profilepic"> &nbsp;  &nbsp; &nbsp; {{val.name}}
+             </td>
+             <td>
+                <button type="button" class="btn btn-primary" (click)="accepting(this.val.id,this.val.username)">Accept</button>
+               
+
+             </td>
+         </tr>
+     </table>
+    </div> 
+
+
+
+<br>
+<br>
+
+<hr style="width: 100%;">
+             <div class="list" *ngIf="peopleYouKnow">
+                <h3>People you may know</h3>
+                <div class= "friendsView">
+                    <br>
+                    <br>
+                 <div class="eachView d-flex m-3" *ngFor="let val of currFriendsData,let i=index" >
+                     
+                     <div style="background-color:red ; height: 140px; width:140px;">
+                         <img style="height: 100%;" width="100%" [src]="currFriendsData[i].profilepic"> 
+                
+                        </div>
+                        <div class="row ">
+             
+                         <div class="col-7">
+                        <div class="homeDisplayData" style="background-color: antiquewhite; height: 140px; width:550px">
+                             <ul>
+                                 <li>{{currFriendsData[i].name}}  &nbsp;</li>
+                   
+                                 <li>{{currFriendsData[i].profession}}</li>
+                                 <br>
+                                 <li>{{currFriendsData[i].age}}</li>
+             
+                                 <br>
+                                 <li class="bio" style="word-wrap:break-word">{{currFriendsData[i].bio}}</li>
+                             </ul>
+                             </div>
+                             </div>
+                             <br>
+                             <br>
+                         <div class="col-3 mt-4" >
+                             <button class="btn btn-success" (click)="adding(this.currFriendsData[i].id)">Add Friend</button>
+                         </div>
+                       
+                        </div>
+                 </div>
+             
+             </div>
+             </div>
+
+             <br>
+             <br>
+     
+     
+             <div class="newlist">
+                 <h3>Friends</h3>
+                     
+                 <div class= "closefriendsView">
+                     <br>
+                     <br>
+                  <div class="eachView d-flex m-3" *ngFor="let val of newfriendsData,let i=index" >
+                      
+                      <div style="background-color:red ; height: 140px; width:140px;">
+                          <img style="height: 100%;" width="100%" [src]="newfriendsData[i].profilepic"> 
+                 
+                         </div>
+                         <div class="row ">
+              
+                          <div class="col-7">
+                         <div class="homeDisplayData" style="background-color: antiquewhite; height: 140px; width:550px">
+                              <ul>
+                                  <li>{{newfriendsData[i].name}}  &nbsp;</li>
+                    
+                                  <li>{{val.profession}}</li>
+                                  <br>
+                                  <li>{{val.age}}</li>
+              
+                                  <br>
+                                  <li class="bio" style="word-wrap:break-word">{{val.bio}}</li>
+                              </ul>
+                              </div>
+                              </div>
+                             
+                        
+                        
+                         </div>
+                  </div>
+              
+              </div>
+              </div>
+            
+         </div>
+     
+        
+             
+           
+        </div>
+
+      

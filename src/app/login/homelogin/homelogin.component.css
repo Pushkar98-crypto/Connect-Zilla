@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Amiri&display=swap');
+.main_img img {
+    height:100%;
+    width:100%;
+}
+
+.mybrand  img {
+    height: 90px;
+    width:90px;
+ }
+ .mynav .mybrand
+ { 
+    font-family: 'Amiri', serif;
+    color: #111743;
+    font-weight: bold;
+ }
+ .rightside button
+{
+    background:#111743;
+     font-family: 'Amiri', serif;
+    margin-right: 38px;
+    border:none;
+    border-radius: 9px;
+    font-weight:bold;
+    font-size:20px;
+}
+.main_text h1
+{
+    font-family:'Amiri', serif;
+    color:#111743;
+    font-size:38px;
+}
+.main_text p
+{
+    font-family:'Amiri', serif;
+    color:gray;
+    font-size:28px;
+}
+.main_con_btns button
+{
+    background:#111743;
+     font-family: 'Amiri', serif;
+    margin-right: 20px;
+    color:blanchedalmond;
+    border:none;
+    border-radius: 9px;
+    font-weight:bold;
+    font-size:20px;
+    height: 90px;
+}
+
+.images img{
+    width:100%;
+    height:100%;
+}
+
+.rightside img
+{
+    height:40px;
+    width:40px;
+}

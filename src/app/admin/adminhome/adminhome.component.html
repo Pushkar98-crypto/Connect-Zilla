@@ -1,0 +1,55 @@
+<div class="row">
+
+    <div class="col-3">
+        
+      <div class="sidebar text-center container-fluid " style="background-color:#111743; color:blanchedalmond; height:1000px">
+       <img src="">
+       <h3></h3>    
+       <h3 style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">Connect Zilla</h3>
+       <hr style="background-color:blanchedalmond" width="100%">  
+
+       <br>
+       <br>
+    
+     <br>
+       <button class="btn btn-warning"><a class="nav-link  " style="width:150px;" >People</a></button>
+
+       <br>
+       <br>
+       <button class="btn btn-warning"><a class="nav-link " style="width:150px;" (click)="logout()">Logout</a></button>
+     
+
+     
+     
+      </div>
+
+       
+
+    </div>
+    <div class="col-9">
+
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+          <h3 style="font-family: 'Times New Roman', Times, serif; text-decoration: underline;">Users </h3>
+        <hr style="width: 100%; height: 5px;">
+       
+        <div class="d-flex justify-content-evenly flex-wrap">
+            <div class="card" style="width: 18rem;"  *ngFor="let val of showData,let i=index">
+                <img [src]="val.profilepic" class="card-img-top" alt="image">
+                <div class="card-body">
+                  <h5 class="card-title">{{val.name}}</h5>
+                  <p class="card-text">{{val.age}} &nbsp; &nbsp; {{val.profession}} &nbsp; &nbsp; {{val.nationality}}</p>
+                  <p class="card-text"> {{val.bio}} </p>
+
+                  <button class="btn btn-primary"  (click)="blocking(this.val.id)">block</button> &nbsp;  &nbsp; &nbsp;
+                  <button class="btn btn-primary" (click)="unblocking(this.val.id)">Unblock</button>
+                </div>
+              </div>
+        </div>
+      
+    </div>
+
+    

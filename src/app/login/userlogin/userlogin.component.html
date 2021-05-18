@@ -1,0 +1,266 @@
+<nav class="navbar navbar-expand-lg mynav d-flex justify-content-between">
+
+    <div class="container">
+      <a class="navbar-brand mybrand" href="#"><img src="https://t3.ftcdn.net/jpg/02/36/68/14/240_F_236681486_kNcIZz6FAlSCaFAVf4nqryrNjCAiFT1q.jpg">Connect-zilla</a>
+    </div>
+      <div class="collapse navbar-collapse rightside d-flex justify-content-evenly" id="navbarSupportedContent" >
+        <ul class="navbar-nav me-auto ">
+          <li class="nav-item">
+          <button class="btn btn-primary" ><a class="nav-link " href="#" style="color: black;">AboutUs</a></button>
+          </li>
+          <li class="nav-item">
+          <button class="btn btn-primary"><a style="color: black; width: 190px;" class="nav-link" >Create an Account</a></button>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"><img  style="height:50x; width:50px;" src="https://image.flaticon.com/icons/png/128/3306/3306630.png"></a>
+            </li>
+           
+
+        
+        </ul>
+        
+      </div>
+    
+  </nav>
+
+  <div class="main_content container">
+    <div class="row">
+        <div class="col-6 ">
+       
+        <br>
+
+         
+          <div class="main_con_btns ">
+            <button type="button" (click)="showregisterForm()">Register </button>
+            <br>  <br>
+            <hr style="width: 200px;">  
+            <br>  <br>
+            <p style="color: gray; font-family:Verdana, Geneva, Tahoma, sans-serif">If Already registerd then Login!!!</p>
+            <button type="button" (click)="showLoginForm()">Login</button>
+          </div>
+        </div>
+        <div class="col-6 main_img" >
+             <img src="https://cdn.pixabay.com/photo/2020/05/18/16/17/social-media-5187243_1280.png">
+        </div>
+    </div>
+</div>
+
+<div class="regisform container" *ngIf="registerForm">
+<hr style="width: 100%;">
+    <h3 style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">Register</h3>
+    <hr style="width: 100%;">
+    <form [formGroup]='regForm' (ngSubmit)="submit()">  
+        <div class="form-group">
+            <label>Name</label>
+            <input type="text" class="form-control" formControlName="name"
+            [ngClass]="{'is-invalid':control.name.errors && issubmitted}">
+            <div style="color:red" *ngIf="control.name.errors?.required && issubmitted">Name is required</div>
+        
+        </div>
+        <div class="form-group">
+            <label>Email</label>
+            <input type="text" class="form-control" formControlName="email" 
+            [ngClass] ="{'is-invalid':control.email.errors && issubmitted}">
+            <div style="color:red" *ngIf="control.email.errors?.required && issubmitted">
+                Email is required
+            </div>
+            <div style="color:red" *ngIf="control.email.errors?.email && issubmitted">
+                Enter email is Correct format
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Age<span style="color: lightgray;">(optional)</span></label>
+            <input type="text" class="form-control" formControlName="age">
+           
+        
+        </div>
+
+        <div class="form-group">
+            <label>Contact</label>
+            <input type="text" class="form-control" formControlName="phoneNumber" 
+            [ngClass]="{'is-invalid':control.phoneNumber.errors && issubmitted}">
+            <div style="color:red" *ngIf="control.phoneNumber.errors?.required && issubmitted">
+                PhoneNumber is required
+            </div>
+            <div style="color:red" *ngIf="control.phoneNumber.hasError('maxlength') && issubmitted">
+                Please Enter Correct Phone Number
+            </div>
+            <div style="color:red" *ngIf="control.phoneNumber.hasError('minlength') && issubmitted">
+                Please Enter Correct Phone Number
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Address</label>
+            <input type="text" class="form-control" formControlName="address"
+            [ngClass]="{'is-invalid':control.name.errors && issubmitted}">
+            <div style="color:gray" *ngIf="control.name.errors?.required && issubmitted">Address is required</div>
+        
+        </div>
+        <div class="form-group">
+            <label>Profession<span style="color: lightgray;">(optional)</span></label>
+            <input type="text" class="form-control" formControlName="profession">
+           
+        
+        </div>
+        <div class="form-group">
+            <label>Nationality<span style="color: lightgray;">(optional)</span></label>
+            <input type="text" class="form-control" formControlName="nationality">
+           
+        
+        </div>
+        <div class="form-group">
+            <label>Marital Status<span style="color: lightgray;">(optional)</span></label>
+            <input type="text" class="form-control" formControlName="marital">
+           
+        
+        </div>
+
+       
+
+        <div class="form-group">
+            <label>UserName</label>
+            <input type="text" class="form-control" formControlName="username"
+            [ngClass]="{'is-invalid':control.username.errors && issubmitted}">
+            <div style="color:red" *ngIf="control.username.errors?.required && issubmitted">Name is required</div>
+         
+
+
+           
+        
+        </div>
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" class="form-control" formControlName="password"
+          [ngClass]="{'is-invalid':control.username.errors && issubmitted}">
+          <div style="color:red" *ngIf="control.password.errors?.required && issubmitted">
+            Password is required
+        </div>
+        </div>
+        <div class="form-group">
+            <label>Confirm Password</label>
+            <input type="password" class="form-control" formControlName="confirmPassword"
+          [ngClass]="{'is-invalid':control.username.errors && issubmitted}">
+          <div style="color:red" *ngIf="control.confirmPassword.errors?.required && issubmitted">
+            Password is required
+        </div>
+     <!---  <div style="color:red" *ngIf="control.confirmPassword.errors?.MustMatch && issubmitted">
+            Password and Confirm Password Does not match
+
+        </div>
+    -->
+
+      
+
+        </div>
+
+
+        <br>
+        <br>
+
+
+        
+
+           
+        <div class="form-group">
+            <label>Profile Photo</label>
+            <input type="file" class="form-control" formControlName="profilepic" (change)="preview($event)">
+            
+        </div>
+        <div class="imageview" id="blah"> 
+            <img [src]="imgURL" *ngIf="imgURL" style="width: 100px; height :100px; border-radius: 10px;"> 
+        </div>
+           
+
+        <br>
+        <br>
+
+        <div class="form-group">
+            <label>Bio-Tell about yourself</label>
+            <textarea type="text" class="form-control" formControlName="bio"></textarea>
+           
+        
+        </div>
+        
+
+
+      
+
+        
+        <br>
+        <button type="submit" class="btn btn-warning">Submit</button>
+        
+        
+        </form>
+
+</div>
+
+<br>
+
+<br>
+
+
+<div class="login_form container" *ngIf="loginForm">
+    <hr style="width: 100%;">
+    <form class="contact-form" (ngSubmit)="sendEmail($event)">
+    <textarea name="message" [hidden]=true [(ngModel)]="ran"></textarea>
+    <input type="submit"  [hidden]=true id="id1" value="send">
+
+    </form>
+<h3>Login</h3>
+<hr style="width: 100%;">
+    <form [formGroup]='logForm' (ngSubmit)="login()" >
+
+        <div class="form-group">
+            <label>UserName</label>
+            <input type="text" class="form-control" formControlName="username"
+            [ngClass]="{'is-invalid':logControls.username.errors && issubmitted}">
+            <div style="color:red" *ngIf="logControls.username.errors?.required && issubmitted">Username is required</div>
+         
+
+
+           
+        
+        </div>
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" class="form-control" formControlName="password"
+          [ngClass]="{'is-invalid':logControls.username.errors && issubmitted}">
+          <div style="color:red" *ngIf="logControls.password.errors?.required && issubmitted">
+            Password is required
+          </div>
+
+        </div>
+
+        <br>
+
+        <textarea name="message" [hidden]=true [(ngModel)]="ran"></textarea>
+
+        <button type="" class="btn btn-warning" >login</button>
+       
+       
+    </form>
+
+    <br>
+
+  <br>
+  <hr style="width: 100%;">
+  <h5 style="font-family:'Times New Roman', Times, serif; text-decoration: underline;">If you are new user then verify yourself then login</h5>
+
+  <hr style="width: 100%;">
+    <form [formGroup]='verifyForm' >
+        <div class="form-group">
+            <label>Code</label>
+            <input type="text" class="form-control" formControlName="code" [(ngModel)]="code">
+
+        </div>
+       <br>
+
+        <button type="button" class="btn btn-success" (click)="verifying()">Verify</button>
+         &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+        <button type="button" class="btn btn-success" (click)="getcode()">getcode</button>
+
+   </form>
+    
+
+</div>
+
