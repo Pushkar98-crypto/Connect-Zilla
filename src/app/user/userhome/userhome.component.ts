@@ -164,19 +164,16 @@ export class UserhomeComponent implements OnInit {
       
       this.changeData=data;
       
-      this.updateUser=this.changeData.username;
+      this.changeData.req.push(this.currentUser)
 
-      this.http.get("http://localhost:3000/users/"+`${this.currentId}`).subscribe((data)=>
-      {
-        this.nowdata=data;
-        this.nowdata.req.push(this.updateUser)
+      
         // console.log(this.nowdata,"line 138");
-         this.http.put("http://localhost:3000/users/"+`${this.currentId}`,this.nowdata).subscribe((data)=>
+         this.http.put("http://localhost:3000/users/"+`${id}`,this.changeData).subscribe((data)=>
          {
             console.log(data,"line 137");
          })
         
-      })
+    
    
      
       

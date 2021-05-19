@@ -3,7 +3,7 @@ import {FormGroup, FormBuilder, Validators }  from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import {AuthserviceService } from '../../auth/authservice.service';
-import { flatten } from '@angular/compiler';
+import { flatten, ThisReceiver } from '@angular/compiler';
 import emailjs, { EmailJSResponseStatus } from 'emailjs-com';
 
 
@@ -36,6 +36,8 @@ export class UserloginComponent implements OnInit {
   public tempData:any;
   public infodata:any;
   public ran:any;
+  public currId:any;
+  public cid:any;
 
   constructor(private router: Router, private formbuilder:FormBuilder, private http:HttpClient, private authservice :AuthserviceService) {
     this.regForm=this.formbuilder.group({
@@ -55,7 +57,8 @@ export class UserloginComponent implements OnInit {
       isblocked:[false],
       friends:[[]],
       verified:[false],
-      req:[[]]
+      req:[[]],
+      code:[]
 
     
 
@@ -82,11 +85,23 @@ export class UserloginComponent implements OnInit {
 
    this.http.get("http://localhost:3000/users").subscribe(data=>{
     this.infodata=data;
+     })
+     
 
-   })
+     for(var i=0;i<this.infodata.length;i++)
+     {
+       if(this.infodata[i].username==this.logForm.value.username)
+       {
+         this.currentInfodata=this.infodata[i];
+        
+         this.currentID=this.infodata[i].id;
+       }
+     }    
 
-    this.ran=Math.floor(Math.random()*100000+1);
-   
+   this.ran=Math.floor(Math.random()*100000+1);
+    console.log(this.ran,"line 197");
+
+
    
   }
 
@@ -192,21 +207,57 @@ this.issub=false;
   }
 
   getcode()
+
   {
+     
+    for(var i=0;i<this.infodata.length;i++)
+    {
+      if(this.infodata[i].username==this.logForm.value.username)
+      {
+        this.currentInfodata=this.infodata[i];
+       
+        this.currentID=this.infodata[i].id;
+      }
+    }    
+
+    if(this.logForm.value.username !=" " && this.logForm.value.username !=" " && !this.currentInfodata.verified)
+    {
+    
     const ap:any=  document.getElementById("id1");
     ap.click();
+
+    }
+    else
+     {
+       alert("Username and password is Empty or already verified")
+     }
   }
  verifying()
 {
 
+  for(var i=0;i<this.infodata.length;i++)
+   {
+     if(this.infodata[i].username==this.logForm.value.username)
+     {
+       this.currentInfodata=this.infodata[i];
+       console.log(this.currentInfodata)
+       this.currentID=this.infodata[i].id;
+     }
+   }    
+
+ 
+  if(this.logForm.value.username !="" && this.logForm.value.username !=" "  && !this.currentInfodata.verified)
+  {
     
     for(var i=0;i<this.infodata.length;i++)
     {
-      if(this.infodata[i].username===this.logForm.value.username)
+      if(this.infodata[i].username===this.logForm.value.username  && this.logForm.value.username !="" && this.logForm.value.username !=" "  )
       {
         this.currentInfodata=this.infodata[i];
         this.currentID=this.infodata[i].id;
       }
+
+     
     } 
     console.log(this.code);
     console.log(this.ran);
@@ -228,6 +279,10 @@ this.issub=false;
     }
     
   }
+  else{
+    alert("Username and password is empty! or you are already verified")
+  }
+}
   showLoginForm()
   {
     this.loginForm=true;
@@ -239,4 +294,7 @@ this.issub=false;
     this.registerForm=true;
     this.loginForm=false;
   }
+
+
+
 }
